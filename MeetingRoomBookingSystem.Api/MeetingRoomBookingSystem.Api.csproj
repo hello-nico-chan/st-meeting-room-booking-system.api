@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="../MeetingRoomBookingSystem.Core/MeetingRoomBookingSystem.Core.csproj" />
       <ProjectReference Include="../MeetingRoomBookingSystem.Persistence/MeetingRoomBookingSystem.Persistence.csproj" />
     </ItemGroup>
 
