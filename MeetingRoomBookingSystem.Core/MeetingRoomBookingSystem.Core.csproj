@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../MeetingRoomBookingSystem.Persistence/MeetingRoomBookingSystem.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

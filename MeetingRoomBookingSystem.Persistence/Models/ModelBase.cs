@@ -7,7 +7,7 @@ public class ModelBase
     [Key]
     public Guid Id { get; set;}
 
-    public DateTime createdAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-    public DateTime updatedAt { get; set; } = DateTime.Now;
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }
