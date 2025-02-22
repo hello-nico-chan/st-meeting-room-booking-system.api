@@ -1,7 +1,6 @@
+namespace MeetingRoomBookingSystem.Core.Requests;
 
-namespace MeetingRoomBookingSystem.Core.Models;
-
-public class UserModel : BaseModel
+public class AddUserRequest
 {
     public string Username { get; set; }
 

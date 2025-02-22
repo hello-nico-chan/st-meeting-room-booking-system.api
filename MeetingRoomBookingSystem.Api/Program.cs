@@ -1,6 +1,11 @@
 using System.Text;
 using MeetingRoomBookingSystem.Core.Constants;
+using MeetingRoomBookingSystem.Core.IRepositories;
+using MeetingRoomBookingSystem.Core.IServices;
+using MeetingRoomBookingSystem.Core.Repositories;
+using MeetingRoomBookingSystem.Core.Services;
 using MeetingRoomBookingSystem.Persistence;
+using MeetingRoomBookingSystem.Persistence.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -41,6 +46,12 @@ builder.Services.AddAuthentication(x =>
 
 builder.Services.AddDbContext<MrbsDbContext>(optionsAction =>
     optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("MrbsConnectionString")));
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IGeneralRepository<RefreshToken>, GeneralRepository<RefreshToken>>();
+builder.Services.AddScoped<IGeneralRepository<User>, GeneralRepository<User>>();
 
 builder.Services.AddCors();
 

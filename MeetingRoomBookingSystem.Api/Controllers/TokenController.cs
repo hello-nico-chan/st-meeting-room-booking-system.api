@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeetingRoomBookingSystem.Api.Controllers;
 
+[Route("api/[controller]")]
 [ApiController]
-[Route("token")]
 public class TokenController : ControllerBase
 {
     private readonly ITokenService _service;
