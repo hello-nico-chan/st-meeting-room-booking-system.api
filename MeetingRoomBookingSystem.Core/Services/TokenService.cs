@@ -22,6 +22,7 @@ public class TokenService : ITokenService
     public async Task<string> GenerateAccessTokenAsync(string userId)
     {
         var user = await _userService.GetUserByIdAsync(userId);
+        if (user == null) return string.Empty;
 
         var claims = new[]
         {

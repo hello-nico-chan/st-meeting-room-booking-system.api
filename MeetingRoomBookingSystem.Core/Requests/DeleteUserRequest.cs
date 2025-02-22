@@ -2,5 +2,5 @@ namespace MeetingRoomBookingSystem.Core.Requests;
 
 public class DeleteUserRequest
 {
-    public string UserId { get; set;}
+    public string UserId { get; set; } = string.Empty;
 }
