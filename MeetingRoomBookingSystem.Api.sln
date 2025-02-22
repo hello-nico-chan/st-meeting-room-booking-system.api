@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingRoomBookingSystem.Api", "MeetingRoomBookingSystem.Api\MeetingRoomBookingSystem.Api.csproj", "{5834B9A0-7380-4A58-B7EF-077CA88709C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingRoomBookingSystem.Core", "MeetingRoomBookingSystem.Core\MeetingRoomBookingSystem.Core.csproj", "{B07755E6-9AE3-4811-BD86-D991B1391C85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingRoomBookingSystem.Persistence", "MeetingRoomBookingSystem.Persistence\MeetingRoomBookingSystem.Persistence.csproj", "{86AC22DE-F9F1-451F-9CFF-16B43AF051C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,13 @@ Global
 		{5834B9A0-7380-4A58-B7EF-077CA88709C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5834B9A0-7380-4A58-B7EF-077CA88709C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5834B9A0-7380-4A58-B7EF-077CA88709C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B07755E6-9AE3-4811-BD86-D991B1391C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07755E6-9AE3-4811-BD86-D991B1391C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07755E6-9AE3-4811-BD86-D991B1391C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07755E6-9AE3-4811-BD86-D991B1391C85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86AC22DE-F9F1-451F-9CFF-16B43AF051C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86AC22DE-F9F1-451F-9CFF-16B43AF051C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86AC22DE-F9F1-451F-9CFF-16B43AF051C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86AC22DE-F9F1-451F-9CFF-16B43AF051C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
