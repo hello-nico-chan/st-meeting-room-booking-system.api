@@ -14,12 +14,14 @@ public class BookingService : IBookingService
         _repository = repository;
     }
 
-    public async Task<BookingModel> BookingAsync(string roomId, string userId, DateTime startTime, DateTime endTime)
+    public async Task<BookingModel> BookingAsync(string roomId, string userId, string title, string participants, DateTime startTime, DateTime endTime)
     {
         var bookingModel = new BookingModel()
         {
             MeetingRoomId = roomId,
             UserId = userId,
+            Title = title,
+            Participants = participants,
             StartTime = startTime,
             EndTime = endTime
         };
@@ -28,6 +30,8 @@ public class BookingService : IBookingService
         {
             MeetingRoomId = roomId,
             UserId = userId,
+            Title = title,
+            Participants = participants,
             StartTime = startTime,
             EndTime = endTime
         };

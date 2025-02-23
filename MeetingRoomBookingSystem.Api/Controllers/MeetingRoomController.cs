@@ -23,6 +23,13 @@ public class MeetingRoomController : ControllerBase
         return Ok(meetingRoom);
     }
 
+    [HttpPut]
+    public async Task<ActionResult<MeetingRoomResponse>> EditMeetingRoomAsync(EditMettingRoomRequest request)
+    {
+        var meetingroom = await _service.EditMeetingRoomAsync(request.Id, request.Name, request.Location, request.Capacity, request.Type, request.Remark);
+        return Ok(meetingroom);
+    }
+
     [HttpGet("list")]
     public async Task<ActionResult<List<MeetingRoomResponse>>> GetMeetingRoomsAsync()
     {

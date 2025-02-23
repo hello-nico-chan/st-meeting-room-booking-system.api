@@ -47,10 +47,12 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddDbContext<MrbsDbContext>(optionsAction =>
     optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("MrbsConnectionString")));
 
+builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IMeetingRoomService, MeetingRoomService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddScoped<IGeneralRepository<Booking>, GeneralRepository<Booking>>();
 builder.Services.AddScoped<IGeneralRepository<RefreshToken>, GeneralRepository<RefreshToken>>();
 builder.Services.AddScoped<IGeneralRepository<MeetingRoom>, GeneralRepository<MeetingRoom>>();
 builder.Services.AddScoped<IGeneralRepository<User>, GeneralRepository<User>>();

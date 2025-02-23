@@ -29,7 +29,7 @@ public class BookingController : ControllerBase
         try
         {
             await _service.CheckBooking(request.MeetingRoomId, request.StartTime, request.EndTime);
-            var booking = await _service.BookingAsync(request.MeetingRoomId, request.UserId, request.StartTime, request.EndTime);
+            var booking = await _service.BookingAsync(request.MeetingRoomId, request.UserId, request.Title, request.Participants, request.StartTime, request.EndTime);
             return Ok(booking);
         }
         catch (Exception ex)

@@ -8,7 +8,7 @@ public interface IBookingService
 
     public Task CheckBooking(string roomId, DateTime startTime, DateTime endTime);
 
-    public Task<BookingModel> BookingAsync(string roomId, string userId, DateTime startTime, DateTime endTime);
+    public Task<BookingModel> BookingAsync(string roomId, string userId, string title, string participants, DateTime startTime, DateTime endTime);
 
     public Task DeleteBookingAsync(string bookingId);
 }

@@ -42,6 +42,33 @@ public class MeetingRoomService : IMeetingRoomService
         return meetingRoomModel;
     }
 
+    public async Task<MeetingRoomModel> EditMeetingRoomAsync(string id, string name, string location, int capacity, string type, string remark)
+    {
+        var meetingRooms = await _repository.GetAsync(x => x.Id == Guid.Parse(id));
+        var meetingRoom = meetingRooms.FirstOrDefault()!;
+
+        meetingRoom.Name = name;
+        meetingRoom.Location = location;
+        meetingRoom.Capacity = capacity;
+        meetingRoom.Type = type;
+        meetingRoom.Remark = remark;
+
+        _repository.Update(meetingRoom);
+        await _repository.SaveAsync();
+
+        return new MeetingRoomModel()
+        {
+            Id = meetingRoom.Id,
+            Name = meetingRoom.Name,
+            Location = meetingRoom.Location,
+            Capacity = meetingRoom.Capacity,
+            Type = meetingRoom.Type,
+            Remark = meetingRoom.Remark,
+            CreatedAt = meetingRoom.CreatedAt,
+            UpdatedAt = meetingRoom.UpdatedAt
+        };
+    }
+
     public async Task DeleteMeetingRoomByIdAsync(string id)
     {
         var meetingRooms = await _repository.GetAsync(x => x.Id == Guid.Parse(id));
