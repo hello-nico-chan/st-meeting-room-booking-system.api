@@ -14,18 +14,24 @@ public class MeetingRoomService : IMeetingRoomService
         _repository = repository;
     }
 
-    public async Task<MeetingRoomModel> AddMeetingRoomAsync(string name, string location)
+    public async Task<MeetingRoomModel> AddMeetingRoomAsync(string name, string location, int capacity, string type, string remark)
     {
         var meetingRoomModel = new MeetingRoomModel
         {
             Name = name,
-            Location = location
+            Location = location,
+            Capacity = capacity,
+            Type = type,
+            Remark = remark
         };
 
         var meetingRoomEntity = new MeetingRoom()
         {
             Name = name,
-            Location = location
+            Location = location,
+            Capacity = capacity,
+            Type = type,
+            Remark = remark
         };
 
         await _repository.InsertAsync(meetingRoomEntity);
@@ -52,6 +58,9 @@ public class MeetingRoomService : IMeetingRoomService
             Id = meetingRoom.Id,
             Name = meetingRoom.Name,
             Location = meetingRoom.Location,
+            Capacity = meetingRoom.Capacity,
+            Type = meetingRoom.Type,
+            Remark = meetingRoom.Remark,
             CreatedAt = meetingRoom.CreatedAt,
             UpdatedAt = meetingRoom.UpdatedAt
         }).ToList();
@@ -67,6 +76,9 @@ public class MeetingRoomService : IMeetingRoomService
             Id = meetingRoom.Id,
             Name = meetingRoom.Name,
             Location = meetingRoom.Location,
+            Capacity = meetingRoom.Capacity,
+            Type = meetingRoom.Type,
+            Remark = meetingRoom.Remark,
             CreatedAt = meetingRoom.CreatedAt,
             UpdatedAt = meetingRoom.UpdatedAt
         };

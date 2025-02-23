@@ -5,6 +5,7 @@ namespace MeetingRoomBookingSystem.Persistence;
 
 public class MrbsDbContext : DbContext
 {
+    public DbSet<Booking> Bookings { get; set; }
     public DbSet<MeetingRoom> MeetingRooms { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<User> Users { get; set; }

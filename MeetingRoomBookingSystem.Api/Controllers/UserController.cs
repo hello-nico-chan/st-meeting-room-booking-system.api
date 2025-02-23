@@ -20,10 +20,17 @@ public class UserController : ControllerBase
         _tokenService = tokenService;
     }
 
-    [HttpGet("get-user-by-id")]
+    [HttpGet("get-user-by-id/{userId}")]
     public async Task<ActionResult<UserResponse>> GetUserByIdAsync(string userId)
     {
         var user = await _service.GetUserByIdAsync(userId);
+        return Ok(user);
+    }
+
+    [HttpGet("list")]
+    public async Task<ActionResult<UserResponse>> GetAllUsersAsync()
+    {
+        var user = await _service.GetAllUsersAsync();
         return Ok(user);
     }
 
@@ -33,15 +40,15 @@ public class UserController : ControllerBase
         var existingUser = await _service.GetUserByUsernameAsync(request.Username);
         if (existingUser != null) return Ok();
 
-        var user = await _service.AddUserAsync(request.Username, request.Password);
+        var user = await _service.AddUserAsync(request.Username, request.Password, request.IsAdmin);
         return Ok(user.ToResponse());
     }
 
-    [HttpPost("delete-user")]
+    [HttpDelete("{userId}")]
     [Authorize]
-    public async Task<ActionResult<UserResponse>> DeleteUserAsync([FromBody] DeleteUserRequest request)
+    public async Task<ActionResult<UserResponse>> DeleteUserAsync(string userId)
     {
-        await _service.DeleteUserByIdAsync(request.UserId);
+        await _service.DeleteUserByIdAsync(userId);
         return Ok();
     }
 

@@ -25,6 +25,7 @@ public class UserService : IUserService
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt,
             Username = user.Username,
+            IsAdmin = user.IsAdmin
         };
     }
 
@@ -39,21 +40,38 @@ public class UserService : IUserService
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt,
             Username = user.Username,
+            IsAdmin = user.IsAdmin
         };
     }
 
-    public async Task<UserModel> AddUserAsync(string username, string password)
+    public async Task<List<UserModel>> GetAllUsersAsync()
+    {
+        var users = await _repository.GetAsync(x => true);
+
+        return users.Select(user => new UserModel
+        {
+            Id = user.Id,
+            CreatedAt = user.CreatedAt,
+            UpdatedAt = user.UpdatedAt,
+            Username = user.Username,
+            IsAdmin = user.IsAdmin
+        }).ToList();
+    }
+
+    public async Task<UserModel> AddUserAsync(string username, string password, bool isAdmin)
     {
         var userModel = new UserModel
         {
             Username = username,
-            Password = password
+            Password = password,
+            IsAdmin = isAdmin
         };
 
         var userEntity = new User()
         {
             Username = username,
-            Password = password
+            Password = password,
+            IsAdmin = isAdmin
         };
 
         await _repository.InsertAsync(userEntity);
@@ -72,9 +90,9 @@ public class UserService : IUserService
         await _repository.SaveAsync();
     }
 
-    public async Task<UserModel> LoginAsync(string accountId, string password)
+    public async Task<UserModel> LoginAsync(string username, string password)
     {
-        var users = await _repository.GetAsync(user => user.Id == Guid.Parse(accountId) && user.Password == password);
+        var users = await _repository.GetAsync(user => user.Username == username && user.Password == password);
         var user = users.FirstOrDefault() ?? throw new Exception();
 
         user.UpdatedAt = DateTime.UtcNow;
@@ -88,6 +106,7 @@ public class UserService : IUserService
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt,
             Username = user.Username,
+            IsAdmin = user.IsAdmin
         };
     }
 

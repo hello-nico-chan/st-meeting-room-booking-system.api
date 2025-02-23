@@ -4,7 +4,7 @@ namespace MeetingRoomBookingSystem.Core.IServices;
 
 public interface IMeetingRoomService
 {
-    public Task<MeetingRoomModel> AddMeetingRoomAsync(string name, string location);
+    public Task<MeetingRoomModel> AddMeetingRoomAsync(string name, string location, int capacity, string type, string remark);
 
     public Task<List<MeetingRoomModel>> GetAllMeetingRoomsAsync();
 

@@ -10,7 +10,8 @@ public static class UserModelExtension
         return new UserResponse
         {
             Id = userModel.Id.ToString(),
-            Username = userModel.Username
+            Username = userModel.Username,
+            IsAdmin = userModel.IsAdmin
         };
     }
 }

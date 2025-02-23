@@ -19,7 +19,7 @@ public class MeetingRoomController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> AddMeetingRoomAsync(AddMeetingRoomRequest request)
     {
-        var meetingRoom = await _service.AddMeetingRoomAsync(request.Name, request.Location);
+        var meetingRoom = await _service.AddMeetingRoomAsync(request.Name, request.Location, request.Capacity, request.Type, request.Remark);
         return Ok(meetingRoom);
     }
 
@@ -30,14 +30,14 @@ public class MeetingRoomController : ControllerBase
         return Ok(meetingRooms);
     }
 
-    [HttpGet]
+    [HttpGet("{roomId}")]
     public async Task<ActionResult<MeetingRoomResponse>> GetMeetingRoomAsync(string roomId)
     {
         var meetingRoom = await _service.GetMeetingRoomByIdAsync(roomId);
         return Ok(meetingRoom);
     }
 
-    [HttpDelete]
+    [HttpDelete("{roomId}")]
     public async Task<ActionResult> DeleteMeetingRoomAsync(string roomId)
     {
         await _service.DeleteMeetingRoomByIdAsync(roomId);

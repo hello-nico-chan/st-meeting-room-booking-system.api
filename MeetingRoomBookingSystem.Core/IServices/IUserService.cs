@@ -8,7 +8,9 @@ public interface IUserService
     
     public Task<UserModel?> GetUserByUsernameAsync(string username);
 
-    public Task<UserModel> AddUserAsync(string username, string password);
+    public Task<List<UserModel>> GetAllUsersAsync();
+
+    public Task<UserModel> AddUserAsync(string username, string password, bool isAdmin);
 
     public Task DeleteUserByIdAsync(string userId);
 

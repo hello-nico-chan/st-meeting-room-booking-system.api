@@ -56,7 +56,7 @@ public class GeneralRepository<T> : IGeneralRepository<T> where T : ModelBase
 
     public void Delete(T entity)
     {
-        entity.UpdatedAt = DateTime.UtcNow;
+        _dbContext.Entry(entity).State = EntityState.Deleted;
     }
 
     public async Task SaveAsync()
