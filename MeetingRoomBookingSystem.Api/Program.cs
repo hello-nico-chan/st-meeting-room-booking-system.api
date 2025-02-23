@@ -67,6 +67,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors(options => options
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+    );
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 
