@@ -55,17 +55,25 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<LoginResponse>> LoginAsync(LoginRequest request)
     {
-        var userModel = await _service.LoginAsync(request.Username, request.Password);
-        var (accessToken, refreshToken) = await GenerateTokens(userModel.Id.ToString());
-        var loginResponse = new LoginResponse
+        try
         {
-            Id = userModel.Id.ToString(),
-            UserId = userModel.Id.ToString(),
-            Username = userModel.Username,
-            AccessToken = accessToken,
-            RefreshToken = refreshToken
-        };
-        return Ok(loginResponse);
+            var userModel = await _service.LoginAsync(request.Username, request.Password);
+            var (accessToken, refreshToken) = await GenerateTokens(userModel.Id.ToString());
+            var loginResponse = new LoginResponse
+            {
+                Id = userModel.Id.ToString(),
+                UserId = userModel.Id.ToString(),
+                Username = userModel.Username,
+                IsAdmin = userModel.IsAdmin,
+                AccessToken = accessToken,
+                RefreshToken = refreshToken
+            };
+            return Ok(loginResponse);
+        }
+        catch
+        {
+            return Unauthorized();
+        }
     }
 
     private async Task<(string, string)> GenerateTokens(string userId)
